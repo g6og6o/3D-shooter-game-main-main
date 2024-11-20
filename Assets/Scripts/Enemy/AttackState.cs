@@ -6,12 +6,13 @@ using UnityEngine;
 
 public class AttackState : BaseState
 {
+    private AudioSource audioSource;
     private float moveTimer;
     private float losePlayerTimer;
     private float shotTimer;
     public override void Enter()
     {
-        
+        audioSource = enemy.GetComponent<AudioSource>();
     }
 
     public override void Exit()
@@ -54,7 +55,7 @@ public class AttackState : BaseState
         GameObject bullet = GameObject.Instantiate(Resources.Load("Prefabs/Bullet") as GameObject, gunbarrel.position, enemy.transform.rotation);
         Vector3 shootDirection = (enemy.Player.transform.position - gunbarrel.transform.position).normalized;
         bullet.GetComponent<Rigidbody>().velocity = Quaternion.AngleAxis(Random.Range(-3f,3),Vector3.up) * shootDirection * 40;
-
+        audioSource.Play();
         Debug.Log("Shoot");
         shotTimer = 0;
     }

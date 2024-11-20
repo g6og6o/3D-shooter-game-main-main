@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMotor : MonoBehaviour
 {
+    private AudioSource audioSource;
     private CharacterController controller;
     private Vector3 playerVelocity;
     private bool isGrounded;
@@ -17,6 +18,7 @@ public class PlayerMotor : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        audioSource = GetComponent<AudioSource>();
     }
     // Update is called once per frame
     void Update()
@@ -44,6 +46,7 @@ public class PlayerMotor : MonoBehaviour
         if (isGrounded)
         {
             playerVelocity.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
+            audioSource.Play(); 
         }
     }
 }

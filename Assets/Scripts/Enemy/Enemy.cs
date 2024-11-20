@@ -28,6 +28,7 @@ public class Enemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         stateMachine.Initialise();
         player = GameObject.FindGameObjectWithTag("Player");
+
     }
 
     // Update is called once per frame
@@ -36,6 +37,7 @@ public class Enemy : MonoBehaviour
         CanSeePlayer();
         currentState = stateMachine.activeState.ToString();
         debugsphere.transform.position = lastKnowPos;
+        
     }
     public bool CanSeePlayer()
     {
