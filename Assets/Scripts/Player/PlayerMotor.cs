@@ -13,20 +13,20 @@ public class PlayerMotor : MonoBehaviour
     public float gravity = -9.8f;
     public float speed = 5f;
     public float jumpHeight = 3f;
-    // Start is called before the first frame update
+
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
         audioSource = GetComponent<AudioSource>();
     }
-    // Update is called once per frame
+
     void Update()
     {
         isGrounded = controller.isGrounded;
     }
 
-    //receive the inputs for our InputManager.cs and apply them to our character controller.
+
 
     public void ProcessMove(Vector2 input)
 
