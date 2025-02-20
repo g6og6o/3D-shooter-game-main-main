@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-
 public class PlayerMotor : MonoBehaviour
 {
     private AudioSource audioSource;
@@ -14,6 +13,8 @@ public class PlayerMotor : MonoBehaviour
     public float speed = 5f;
     public float jumpHeight = 3f;
 
+    public GameObject bullet;
+    public Transform firePoint;
 
     void Start()
     {
@@ -25,8 +26,6 @@ public class PlayerMotor : MonoBehaviour
     {
         isGrounded = controller.isGrounded;
     }
-
-
 
     public void ProcessMove(Vector2 input)
 
@@ -48,5 +47,10 @@ public class PlayerMotor : MonoBehaviour
             playerVelocity.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
             audioSource.Play(); 
         }
+        //shooting
+    if(Input.GetMouseButtonDown(0))
+    {
+        Instantiate(bullet, firePoint.position, firePoint.rotation);
+    }
     }
 }
